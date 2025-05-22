@@ -31,7 +31,7 @@ export class CoffeesController {
   }
 
   @Post()
-  create(@Body() body: CreateCoffeDto) {
+  create(@Body() body: CoffeDTO) {
     return this.coffeesService.create(body);
   }
 

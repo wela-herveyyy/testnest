@@ -53,7 +53,8 @@ export class CoffeesService {
     return coffee;
   }
 
-  create(@Body() createCoffeeDto: any) {
+  create(@Body() createCoffeeDto: CoffeDTO) {
+    console.log(createCoffeeDto);
     this.coffees.push(createCoffeeDto);
   }
 
