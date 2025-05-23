@@ -10,7 +10,7 @@ export class CoffeesService {
     return this.coffeeRespority.all();
   }
 
-  findOne(id: number) {
+  findOne(id: string) {
     const coffee = this.coffeeRespority.find(id);
     if (!coffee) {
       throw new NotFoundException(`Coffee #${id} not found`);
@@ -23,17 +23,20 @@ export class CoffeesService {
     if (!coffee) {
       throw new NotFoundException(`Coffee #${createCoffeeDto.name} not found`);
     }
-
     return coffee;
   }
 
-  update(id: number, updateCoffeeDto: UpdateCoffeeDto) {
-    const existingCoffee = this.findOne(id);
+  update(id: string, updateCoffeeDto: UpdateCoffeeDto) {
+    const existingCoffee = this.coffeeRespority.update(id, updateCoffeeDto);
     if (!existingCoffee) {
     }
   }
 
-  remove(id: number) {
-    const coffee = this.remove(id);
+  remove(id: string) {
+    const coffee = this.coffeeRespority.remove(id);
+    if (!coffee) {
+      throw new NotFoundException(`Coffee #${id} not found`);
+    }
+    return coffee;
   }
 }

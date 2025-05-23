@@ -20,7 +20,4 @@ export class CoffeDTO {
 }
 
 export class CreateCoffeDto extends PartialType(CoffeDTO) {}
-export class UpdateCoffeeDto extends PartialType(CoffeDTO) {
-  @IsNumber()
-  readonly id: string;
-}
+export class UpdateCoffeeDto extends PartialType(CoffeDTO) {}

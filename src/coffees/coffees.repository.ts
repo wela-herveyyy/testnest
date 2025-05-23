@@ -9,7 +9,7 @@ import { Coffee } from './entities/coffee.entity';
 export class CoffeesRepository {
   constructor(@InjectDb() private db: DB) {}
 
-  async find(id: number) {
+  async find(id: string) {
     const res = await this.db
       .select()
       .from(coffees)
@@ -28,6 +28,25 @@ export class CoffeesRepository {
       return null;
     }
 
+    return res;
+  }
+  async update(id: string, coffee: Coffee) {
+    const res = await this.db
+      .update(coffees)
+      .set(coffee as Coffee)
+      .where(eq(coffees.id, id.toString()));
+    if (!res[0]) {
+      return null;
+    }
+    return res;
+  }
+  async remove(id: string) {
+    const res = await this.db
+      .delete(coffees)
+      .where(eq(coffees.id, id.toString()));
+    if (!res[0]) {
+      return null;
+    }
     return res;
   }
 }
