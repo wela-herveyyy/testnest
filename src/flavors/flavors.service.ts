@@ -1,4 +1,8 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import {
+  Injectable,
+  NotFoundException,
+  NotImplementedException,
+} from '@nestjs/common';
 import { FlavorsRepository } from './flavors.repository';
 import { CreateFlavorDto, UpdateFlavorDto } from 'src/entities/flavor.entity';
 
@@ -18,7 +22,7 @@ export class FlavorsService {
   create(flavor: CreateFlavorDto) {
     const newFlavor = this.flavorsRepository.create(flavor);
     if (!newFlavor) {
-      throw new NotFoundException(`Flavor #${flavor.name} not found`);
+      throw new NotImplementedException(`Flavor #${flavor.name} is not added`);
     }
     return newFlavor;
   }
