@@ -7,10 +7,13 @@ import { Coffee } from './entities/coffee.entity';
 
 @Injectable()
 export class CoffeesRepository {
-  constructor(@InjectDb() private readonly db: DB) {}
+  constructor(@InjectDb() private db: DB) {}
 
   async find(id: number) {
-    const res = await this.db.select().from(coffees).where(eq(coffees.id, id));
+    const res = await this.db
+      .select()
+      .from(coffees)
+      .where(eq(coffees.id, id.toString()));
     if (!res[0]) {
       return null;
     }
@@ -18,5 +21,13 @@ export class CoffeesRepository {
   }
   async all() {
     return this.db.select().from(coffees);
+  }
+  async create(coffee: Coffee) {
+    const res = await this.db.insert(coffees).values(coffee as Coffee);
+    if (!res[0]) {
+      return null;
+    }
+
+    return res;
   }
 }

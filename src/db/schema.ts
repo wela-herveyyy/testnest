@@ -1,8 +1,20 @@
-import { pgTable, serial, varchar } from 'drizzle-orm/pg-core';
+import { nanoid } from 'nanoid';
+
+import { pgTable, varchar } from 'drizzle-orm/pg-core';
 
 export const coffees = pgTable('coffees', {
-  id: serial('id').primaryKey(),
+  id: varchar('id')
+    .primaryKey()
+    .$defaultFn(() => nanoid()),
   name: varchar('name', { length: 256 }),
   brandName: varchar('brand_name', { length: 256 }),
-  flavors: varchar('flavors', { length: 256 }).array(),
+  flavorId: varchar('flavorId').references(() => flavors.id),
+});
+
+export const flavors = pgTable('flavors', {
+  id: varchar('id')
+    .primaryKey()
+    .$defaultFn(() => nanoid()),
+  name: varchar('name', { length: 256 }),
+  description: varchar('description', { length: 256 }),
 });

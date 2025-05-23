@@ -1,5 +1,5 @@
 {
-  "id": "56a46b3b-026b-4d0b-a5c3-057038bcad95",
+  "id": "02225407-9da9-4b87-ace6-a91199013c7a",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -10,7 +10,7 @@
       "columns": {
         "id": {
           "name": "id",
-          "type": "serial",
+          "type": "numeric",
           "primaryKey": true,
           "notNull": true
         },
@@ -26,9 +26,58 @@
           "primaryKey": false,
           "notNull": false
         },
-        "flavors": {
-          "name": "flavors",
-          "type": "varchar(256)[]",
+        "flavorId": {
+          "name": "flavorId",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "coffees_flavorId_flavors_id_fk": {
+          "name": "coffees_flavorId_flavors_id_fk",
+          "tableFrom": "coffees",
+          "tableTo": "flavors",
+          "columnsFrom": [
+            "flavorId"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.flavors": {
+      "name": "flavors",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "numeric",
+          "primaryKey": true,
+          "notNull": true,
+          "generated": {
+            "as": "nextval('flavors_id_seq'::regclass)",
+            "type": "stored"
+          }
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "description": {
+          "name": "description",
+          "type": "varchar(256)",
           "primaryKey": false,
           "notNull": false
         }
