@@ -1,5 +1,5 @@
 import { Body, Injectable, NotFoundException, Res } from '@nestjs/common';
-import { CoffeDTO, UpdateCoffeeDto } from './entities/coffee.entity';
+import { CoffeDTO, UpdateCoffeeDto } from '../entities/coffee.entity';
 import { CoffeesRepository } from './coffees.repository';
 
 @Injectable()

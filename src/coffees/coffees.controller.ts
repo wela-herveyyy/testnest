@@ -13,7 +13,7 @@ import {
   CoffeDTO,
   CreateCoffeDto,
   UpdateCoffeeDto,
-} from './entities/coffee.entity';
+} from '../entities/coffee.entity';
 
 @Controller('coffees')
 export class CoffeesController {

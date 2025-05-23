@@ -3,7 +3,7 @@ import { eq } from 'drizzle-orm';
 import { DB } from 'src/db';
 import { InjectDb } from 'src/db/db.provider';
 import { coffees } from 'src/db/schema';
-import { Coffee } from './entities/coffee.entity';
+import { Coffee } from '../entities/coffee.entity';
 
 @Injectable()
 export class CoffeesRepository {
