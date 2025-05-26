@@ -8,7 +8,8 @@ import { FlavorsModule } from './flavors/flavors.module';
 @Module({
   imports: [
     CoffeesModule, // Method #1: Pass options object
-    DbModule, FlavorsModule,
+    DbModule,
+    FlavorsModule,
   ],
 
   controllers: [AppController],
