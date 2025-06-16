@@ -1,11 +1,11 @@
 import { IsNumber, IsString } from 'class-validator';
 import { PartialType } from '@nestjs/mapped-types';
+import { Flavor } from './flavor.entity';
 export class Coffee {
   id?: string;
   name?: string;
   brandName?: string;
-  // flavors?: string[];
-  flavorId?: string;
+  flavors?: Flavor[];
 }
 
 export class CoffeDTO {

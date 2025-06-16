@@ -11,5 +11,6 @@ export class FlavorDTO {
   @IsString()
   readonly description: string;
 }
+
 export class CreateFlavorDto extends FlavorDTO {}
 export class UpdateFlavorDto extends FlavorDTO {}
