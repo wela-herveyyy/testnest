@@ -1,21 +1,23 @@
 import { IsNumber, IsString } from 'class-validator';
 import { PartialType } from '@nestjs/mapped-types';
+import { Flavor } from './flavor.entity';
 export class Coffee {
-  id?: number;
+  id?: string;
   name?: string;
-  brand?: string;
-  flavors?: string[];
+  brandName?: string;
+  flavors?: Flavor[];
 }
 
 export class CoffeDTO {
-  @IsNumber()
-  readonly id?: number;
   @IsString()
   readonly name: string;
   @IsString()
-  readonly brand: string;
-  @IsString({ each: true })
-  readonly flavors: string[];
+  readonly brandName: string;
+  // @IsString({ each: true })
+  // readonly flavors: string[];
+  @IsString()
+  readonly flavorId: string;
 }
+
 export class CreateCoffeDto extends PartialType(CoffeDTO) {}
 export class UpdateCoffeeDto extends PartialType(CoffeDTO) {}
